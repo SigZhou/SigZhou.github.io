@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>essay | 博客</title>
+  <title>判断当前时间是否在某段时间内 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
@@ -23,14 +23,17 @@
         border-left-color: #6d6d6d;    /*左边框颜色*/
     }
   </style>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="essay">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;essay&#x2F;index.html">
+  <meta name="description" content="因为实际工作需要判断当前时间是否在可操作时间内，需要对当前时间添加个判断，为此写了二种解决方式，一是写在JSP中，二是在JAVA类中完成比较。 一、JSP中 1、月份是从0开始，因此parse为Date类型时候需要-1,parse为String类型时候需要+1。 2、getTime是查询距离1970年1月1日的毫秒数，Date类型可用此比较大小。 1234567891011121314151617">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断当前时间是否在某段时间内">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;22&#x2F;Calendar&#x2F;index.html">
 <meta property="og:site_name" content="博客">
+<meta property="og:description" content="因为实际工作需要判断当前时间是否在可操作时间内，需要对当前时间添加个判断，为此写了二种解决方式，一是写在JSP中，二是在JAVA类中完成比较。 一、JSP中 1、月份是从0开始，因此parse为Date类型时候需要-1,parse为String类型时候需要+1。 2、getTime是查询距离1970年1月1日的毫秒数，Date类型可用此比较大小。 1234567891011121314151617">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-26T15:21:33.000Z">
-<meta property="article:modified_time" content="2019-12-26T15:21:33.535Z">
+<meta property="article:published_time" content="2019-12-22T11:17:06.000Z">
+<meta property="article:modified_time" content="2020-01-14T15:31:26.380Z">
 <meta property="article:author" content="Sig Zhou">
+<meta property="article:tag" content="Calnedar  jsp">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -177,27 +180,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-Calendar" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      essay
+      判断当前时间是否在某段时间内
     </h1>
   
 
         
-        <a href="/essay/index.html" class="archive-article-date">
-  	<time datetime="2019-12-26T15:21:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
+        <a href="/2019/12/22/Calendar/" class="archive-article-date">
+  	<time datetime="2019-12-22T11:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>因为实际工作需要判断当前时间是否在可操作时间内，需要对当前时间添加个判断，为此写了二种解决方式，一是写在JSP中，二是在JAVA类中完成比较。</p>
+<p>一、JSP中</p>
+<p>1、月份是从0开始，因此parse为Date类型时候需要-1,parse为String类型时候需要+1。</p>
+<p>2、getTime是查询距离1970年1月1日的毫秒数，Date类型可用此比较大小。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">compareTime</span>(<span class="params">nowTime,startTime,endTime</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'111111'</span>);</span><br><span class="line">        <span class="keyword">var</span> arrNow = nowTime.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(arrNow[<span class="number">0</span>],(arrNow[<span class="number">1</span>]<span class="number">-1</span>),arrNow[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> arrStar = startTime.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>(arrStar[<span class="number">0</span>],(arrStar[<span class="number">1</span>]<span class="number">-1</span>),arrStar[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> arrEnd = endTime.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>(arrEnd[<span class="number">0</span>],(arrEnd[<span class="number">1</span>]<span class="number">-1</span>),arrEnd[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> now1 = now.getTime();</span><br><span class="line">        <span class="keyword">var</span> start1 = start.getTime();</span><br><span class="line">        <span class="keyword">var</span> end1 = end.getTime();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (now1 &gt; start1 &amp;&amp; now1 &lt; end1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"在时间区间内"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"不在时间区间内"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compareTime(<span class="string">'2030-11-11'</span>,<span class="string">'2020-10-10'</span>,<span class="string">'2020-12-12'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>二、JAVA中</p>
+<p>1、实现了Comparable接口，Comparable主要用于对比，与Comparable有区别（详情另有文章描述）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Calendar</span> <span class="keyword">implements</span> <span class="title">Serializable</span>, <span class="title">Cloneable</span>, <span class="title">Comparable</span>&lt;<span class="title">Calendar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.ParseException;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarTest</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">    String format = <span class="string">"HH:mm:ss"</span>;</span><br><span class="line">    Date startTime = <span class="keyword">new</span> SimpleDateFormat(format).parse(<span class="string">"10:10:10"</span>);</span><br><span class="line">    Date endTime = <span class="keyword">new</span> SimpleDateFormat(format).parse(<span class="string">"12:12:12"</span>);</span><br><span class="line">    Date nowTime = <span class="keyword">new</span> SimpleDateFormat(format).parse(<span class="string">"11:11:11"</span>);</span><br><span class="line">    Boolean flag =  isTureDate(nowTime,startTime,endTime);</span><br><span class="line">    System.out.println(flag);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Boolean <span class="title">isTureDate</span><span class="params">(Date nowTime, Date startTime, Date endTime)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (startTime.getTime() == nowTime.getTime() || nowTime.getTime() == endTime.getTime() )&#123;</span><br><span class="line">      <span class="keyword">return</span>  <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Calendar now = Calendar.getInstance();</span><br><span class="line">    now.setTime(nowTime);</span><br><span class="line"></span><br><span class="line">    Calendar start = Calendar.getInstance();</span><br><span class="line">    start.setTime(startTime);</span><br><span class="line"></span><br><span class="line">    Calendar end = Calendar.getInstance();</span><br><span class="line">    end.setTime(endTime);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (now.after(start) &amp;&amp; now.before(end)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>  <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
       
 
       
@@ -205,6 +225,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Calnedar  jsp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -255,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/essay/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/22/Calendar/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,6 +298,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/22/Session/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Session机制详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -317,7 +358,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2019 Sig Zhou
+        &copy; 2020 Sig Zhou
       </div>
      <div class="footer-right">
           
@@ -337,7 +378,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
@@ -407,15 +448,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Calnedar  jsp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ArrayList</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
+                <a href="javascript:void(0)" class="js-tag color3">Session</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Session</a>
+                <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
               </li>
             
             <div class="clearfix"></div>
