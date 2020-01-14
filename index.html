@@ -177,92 +177,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Calendar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/22/Calendar/">判断当前时间是否在某段时间内</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/22/Calendar/" class="archive-article-date">
-  	<time datetime="2019-12-22T11:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为实际工作需要判断当前时间是否在可操作时间内，需要对当前时间添加个判断，为此写了二种解决方式，一是写在JSP中，二是在JAVA类中完成比较。</p>
-<p>一、JSP中</p>
-<p>1、月份是从0开始，因此parse为Date类型时候需要-1,parse为String类型时候需要+1。</p>
-<p>2、getTime是查询距离1970年1月1日的毫秒数，Date类型可用此比较大小。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">compareTime</span>(<span class="params">nowTime,startTime,endTime</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'111111'</span>);</span><br><span class="line">        <span class="keyword">var</span> arrNow = nowTime.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(arrNow[<span class="number">0</span>],(arrNow[<span class="number">1</span>]<span class="number">-1</span>),arrNow[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> arrStar = startTime.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">var</span> start = <span class="keyword">new</span> <span class="built_in">Date</span>(arrStar[<span class="number">0</span>],(arrStar[<span class="number">1</span>]<span class="number">-1</span>),arrStar[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> arrEnd = endTime.split(<span class="string">"-"</span>);</span><br><span class="line">        <span class="keyword">var</span> end = <span class="keyword">new</span> <span class="built_in">Date</span>(arrEnd[<span class="number">0</span>],(arrEnd[<span class="number">1</span>]<span class="number">-1</span>),arrEnd[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> now1 = now.getTime();</span><br><span class="line">        <span class="keyword">var</span> start1 = start.getTime();</span><br><span class="line">        <span class="keyword">var</span> end1 = end.getTime();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (now1 &gt; start1 &amp;&amp; now1 &lt; end1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"在时间区间内"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"不在时间区间内"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compareTime(<span class="string">'2030-11-11'</span>,<span class="string">'2020-10-10'</span>,<span class="string">'2020-12-12'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>二、JAVA中</p>
-<p>1、实现了Comparable接口，Comparable主要用于对比，与Comparable有区别（详情另有文章描述）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Calendar</span> <span class="keyword">implements</span> <span class="title">Serializable</span>, <span class="title">Cloneable</span>, <span class="title">Comparable</span>&lt;<span class="title">Calendar</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.ParseException;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalendarTest</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line">    String format = <span class="string">"HH:mm:ss"</span>;</span><br><span class="line">    Date startTime = <span class="keyword">new</span> SimpleDateFormat(format).parse(<span class="string">"10:10:10"</span>);</span><br><span class="line">    Date endTime = <span class="keyword">new</span> SimpleDateFormat(format).parse(<span class="string">"12:12:12"</span>);</span><br><span class="line">    Date nowTime = <span class="keyword">new</span> SimpleDateFormat(format).parse(<span class="string">"11:11:11"</span>);</span><br><span class="line">    Boolean flag =  isTureDate(nowTime,startTime,endTime);</span><br><span class="line">    System.out.println(flag);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Boolean <span class="title">isTureDate</span><span class="params">(Date nowTime, Date startTime, Date endTime)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (startTime.getTime() == nowTime.getTime() || nowTime.getTime() == endTime.getTime() )&#123;</span><br><span class="line">      <span class="keyword">return</span>  <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Calendar now = Calendar.getInstance();</span><br><span class="line">    now.setTime(nowTime);</span><br><span class="line"></span><br><span class="line">    Calendar start = Calendar.getInstance();</span><br><span class="line">    start.setTime(startTime);</span><br><span class="line"></span><br><span class="line">    Calendar end = Calendar.getInstance();</span><br><span class="line">    end.setTime(endTime);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (now.after(start) &amp;&amp; now.before(end)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span>  <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Calnedar  jsp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Session" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -301,6 +215,78 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Session</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Calendar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/22/Calendar/">判断当前时间是否在某段时间内</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/22/Calendar/" class="archive-article-date">
+  	<time datetime="2019-12-22T11:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为实际工作需要判断当前时间是否在可操作时间内，需要对当前时间添加个判断，为此写了二种解决方式，一是写在JSP中，二是在JAVA类中完成比较。
+        
+          <a class="article-more-a" href="/2019/12/22/Calendar/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Calnedar,jsp</a>
         		</li>
       		
 		</ul>
@@ -582,15 +568,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Calnedar  jsp</a>
+                <a href="javascript:void(0)" class="js-tag color3">Session</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Calnedar,jsp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ArrayList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Session</a>
               </li>
              
               <li class="article-tag-list-item">
