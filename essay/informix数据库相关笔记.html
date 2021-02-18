@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>踩坑记录 | 博客</title>
+  <title>博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
@@ -23,17 +23,16 @@
         border-left-color: #6d6d6d;    /*左边框颜色*/
     }
   </style>
-  <meta name="description" content="security  debug给的提示太少 看的脑壳痛  记录下遇到的错误 Access is deneid1.可debug异常">
-<meta property="og:type" content="article">
-<meta property="og:title" content="踩坑记录">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;14&#x2F;notes1&#x2F;index.html">
+  <meta name="description" content="informix数据库相关笔记 一、设置事务和会话隔离级别 1set isolation to dirty read  1 dirty read   ​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。 2 Committed Read ​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。 3 Cursor Stability ​">
+<meta property="og:type" content="website">
+<meta property="og:title" content="博客">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;essay&#x2F;informix%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="security  debug给的提示太少 看的脑壳痛  记录下遇到的错误 Access is deneid1.可debug异常">
+<meta property="og:description" content="informix数据库相关笔记 一、设置事务和会话隔离级别 1set isolation to dirty read  1 dirty read   ​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。 2 Committed Read ​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。 3 Cursor Stability ​">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-14T06:20:02.000Z">
-<meta property="article:modified_time" content="2019-12-15T13:16:27.765Z">
+<meta property="article:published_time" content="2021-02-18T13:17:38.210Z">
+<meta property="article:modified_time" content="2020-07-09T13:01:37.996Z">
 <meta property="article:author" content="Sig Zhou">
-<meta property="article:tag" content="spring-security">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -180,48 +179,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-notes1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      踩坑记录
-    </h1>
-  
-
-        
-        <a href="/2019/12/14/notes1/" class="archive-article-date">
-  	<time datetime="2019-12-14T06:20:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>security  debug给的提示太少 看的脑壳痛  记录下遇到的错误</p>
-<h4 id="Access-is-deneid"><a href="#Access-is-deneid" class="headerlink" title="Access is deneid"></a>Access is deneid</h4><h5 id="1-可debug异常"><a href="#1-可debug异常" class="headerlink" title="1.可debug异常"></a>1.可debug异常</h5><a id="more"></a>
+        <p>informix数据库相关笔记</p>
+<p>一、设置事务和会话隔离级别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">isolation</span> <span class="keyword">to</span> dirty <span class="keyword">read</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Failed to parse expression <span class="string">'ROLE_USER,ROLE_ADMIN'</span></span><br></pre></td></tr></table></figure>
+<p>1 dirty read  </p>
+<p>​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。</p>
+<p>2 Committed Read</p>
+<p>​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。</p>
+<p>3 Cursor Stability</p>
+<p>​    游标稳定性</p>
+<p>4 Repeatable Read</p>
+<p>​    可重复读： 读取的记录上加共享锁，其他用户可以加读取数据，但不能修改，事务提交后，锁才被释放，同一个事务中前后俩次读取记录是一致的（A事务2次读取的值不会因为其他事务对数据进行修改而变化）。</p>
+<p>5 Last Committed Read </p>
+<p>​    读最后提交数据：乐观锁，它解决了Committed Read的不足，因为Committed Read在记录被锁时，其它进程需要等待。</p>
+<p>​    与Committed Read对比：提高了并发量和系统的吞吐量。表需要设置为行级锁，而不是页级锁。</p>
+<p>二、锁</p>
+<p>​    锁，防止其他进程修改。</p>
+<p>​    锁的释放：</p>
+<p>​        1）数据库关闭，锁释放</p>
+<p>​        2）数据库使用事务，事务结束，释放事务加的锁</p>
+<p>​        3） 不使用事务时，unload table时，锁被释放。</p>
+<p>​    锁的类型    </p>
+<p>​        1） 共享锁（Shared locks）：多事务读取，只有当前事务可修改，其他只可读取，多个事务可以在一个对象上加多个共享锁（如果对象有多个共享锁，所有用户不可修改，直到共享锁全部释放），在已有排他锁的对象上不可加共享锁。</p>
+<p>​        2） 排他锁(Exclusive locks)：同一时间只有一个事务可以读取，加了排他锁的记录不可再加其他锁。</p>
+<p>​        3） 提升/更新锁（Promotable/Update locks）:</p>
+<p>​        4）专一锁（Intent lock）:</p>
+<p>​    锁的不同粒度：</p>
+<p>​            1）数据库级别的锁：数据库管理活动，如imports和exports</p>
+<p>​                </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATABASE database_name EXCLUSIVE;</span><br></pre></td></tr></table></figure>
 
-<p>配置问题，开启了use-expressions=”true” 正确配置如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;security:intercept-url pattern=<span class="string">"/**"</span> access=<span class="string">"hasAnyRole('ROLE_USER','ROLE_ADMIN')"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>​            2）行级别的锁：整个表或大部分数据需要更新，表级锁，效率更高</p>
+<p>​            排它锁</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LOCK</span> <span class="keyword">TABLE</span> tab1 <span class="keyword">IN</span> EXCLUSIVE <span class="keyword">MODE</span>;</span><br></pre></td></tr></table></figure>
 
-<p>虽然use-expressions=”false”后,access=”ROLE_USER,ROLE_ADMIN” 可以使用，但是最好开启，详情见security使用笔记</p>
-<h5 id="2-也可debug异常"><a href="#2-也可debug异常" class="headerlink" title="2.也可debug异常"></a>2.也可debug异常</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.security.access.AccessDeniedException: Access is denied</span><br><span class="line">	at org.springframework.security.access.vote.AffirmativeBased.decide(AffirmativeBased.java:<span class="number">84</span>)</span><br></pre></td></tr></table></figure>
+<p>​            共享锁</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LOCK</span> <span class="keyword">TABLE</span> tab2 <span class="keyword">IN</span> <span class="keyword">SHARE</span> <span class="keyword">MODE</span>;</span><br></pre></td></tr></table></figure>
 
-<p> 本人目前遇到过二次这样的异常，二次的解决方法如下</p>
-<p>  1.form表单路径与security.xml中配置不符</p>
-<p>​     form表单的路径是 login</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"$&#123;pageContext.request.contextPath&#125;/login"</span> method=<span class="string">"post"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>​            取消锁</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UNLOCK</span> <span class="keyword">TABLE</span> tab1;</span><br></pre></td></tr></table></figure>
 
-<p>​     security.xml中路径是 login.do</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;security:form-login</span><br><span class="line">                login-page=<span class="string">"/login.jsp"</span></span><br><span class="line">                login-processing-url=<span class="string">"/login.do"</span></span><br><span class="line">                <span class="keyword">default</span>-target-url=<span class="string">"/index.jsp"</span></span><br><span class="line">                authentication-failure-url=<span class="string">"/failer.jsp"</span></span><br><span class="line">                authentication-success-forward-url=<span class="string">"/pages/main.jsp"</span></span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+<p>​            3) 页级锁： 当按数据物理顺序进行访问和更新时，页级锁效率高。informix默认为页级锁。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tab1 <span class="keyword">LOCK</span> <span class="keyword">MODE</span> PAGE;</span><br></pre></td></tr></table></figure>
 
-<p>2.未使用密码加密，security.xml中却配置了密码加密。非常坑爹，尝试各种方法解决第一个BUG时候，却导致了这个BUG。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;security:password-encoder ref=<span class="string">"passwordEncoder"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>​            4） 行级锁： 个事务只访问表中的一小部分数据，行级锁效率高。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab1 (col1) <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">ROW</span>;</span><br></pre></td></tr></table></figure>
 
+<p>​                    将某表修改为行级别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tab1 <span class="keyword">LOCK</span> <span class="keyword">MODE</span> (<span class="keyword">ROW</span>);</span><br></pre></td></tr></table></figure>
+
+<p>​            5） 查看表锁模式的方法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oncheck –pt dbname:tablename;</span><br></pre></td></tr></table></figure>
+
+<p>​            或</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbschema –d dbname –t tablename -ss;</span><br></pre></td></tr></table></figure>
+
+<p>​        设置事务/会话的锁模式</p>
+<p>​            1） 不会等待锁的释放</p>
+<p>​            默认的锁模式，如果数据库对象被锁，则立即返回错误。错误消息参考如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-244: Could not <span class="keyword">do</span> a <span class="keyword">physical</span>-<span class="keyword">order</span> <span class="keyword">read</span> <span class="keyword">to</span> <span class="keyword">fetch</span> the <span class="keyword">next</span> <span class="keyword">row</span></span><br><span class="line">• <span class="number">107</span>: ISAM <span class="keyword">error</span>: <span class="built_in">record</span> <span class="keyword">is</span> <span class="keyword">locked</span></span><br></pre></td></tr></table></figure>
+
+<p>​            设置为此种锁模式的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">TO</span> <span class="keyword">NOT</span> <span class="keyword">WAIT</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​            2)  一致等待锁的释放</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">TO</span> <span class="keyword">WAIT</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​            3) 在锁释放前，等待n秒，锁没释放，则报错。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">TO</span> <span class="keyword">WAIT</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​    锁的监控：</p>
+<p>​            1）监控session的隔离级别        使用: onstat –g sql 或者 onstat –g ses，例如在笔者测试服务器上运行onstat -g sql</p>
+<p>​            2）<strong>查看用户进程锁等待情况</strong>       使用: onstat –u</p>
+<p>​            3） <strong>查看锁使用和等待情况</strong>       使用: onstat -k</p>
+<p>​            4） <strong>监控数据库事务及其状态</strong>       使用: onstat -x</p>
+<p>​    </p>
+<p>三、物理日志和逻辑日志</p>
+<p>​    1  物理日志：存储一批dbspace页的前映像，前映像：代表了所有数据在物理上与逻辑上都保持一致的这样一个时刻</p>
+<p>​    2  逻辑日志（logical log）：用来记录所有的事务操作及其处理的数据，对数据Online所发生的变化进行日志记录</p>
+<p>​    物理日志+逻辑日志可以恢复数据自上一次已知的一致点以来发生的所有事务</p>
+<p>​    </p>
 
       
 
@@ -230,17 +273,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spring-security</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -291,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/14/notes1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/essay/informix%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,20 +335,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2019/12/17/arrayList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ArrayList笔记
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -338,7 +356,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Access-is-deneid"><span class="toc-number">1.</span> <span class="toc-text">Access is deneid</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-可debug异常"><span class="toc-number">1.1.</span> <span class="toc-text">1.可debug异常</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-也可debug异常"><span class="toc-number">1.2.</span> <span class="toc-text">2.也可debug异常</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -387,7 +405,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

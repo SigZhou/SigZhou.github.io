@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>踩坑记录 | 博客</title>
+  <title>博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
@@ -23,17 +23,16 @@
         border-left-color: #6d6d6d;    /*左边框颜色*/
     }
   </style>
-  <meta name="description" content="security  debug给的提示太少 看的脑壳痛  记录下遇到的错误 Access is deneid1.可debug异常">
-<meta property="og:type" content="article">
-<meta property="og:title" content="踩坑记录">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;14&#x2F;notes1&#x2F;index.html">
+  <meta name="description" content="转载—数据库连接池数据库异常自动重连配置汇总这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。文章类型：安装部署 在实际应用中，有的时候会遇到这样一种情况： 数据库和应用服务器分别在两台主机上，当数据库连接意外断开，自动重新连接后，应用和数据库能够重新连接成功，但是报表应用就无法使用了，必须重启应用服务器，才能继续使用报表应用。 下面介绍一">
+<meta property="og:type" content="website">
+<meta property="og:title" content="博客">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;essay&#x2F;%E8%BD%AC%E8%BD%BD---%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="security  debug给的提示太少 看的脑壳痛  记录下遇到的错误 Access is deneid1.可debug异常">
+<meta property="og:description" content="转载—数据库连接池数据库异常自动重连配置汇总这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。文章类型：安装部署 在实际应用中，有的时候会遇到这样一种情况： 数据库和应用服务器分别在两台主机上，当数据库连接意外断开，自动重新连接后，应用和数据库能够重新连接成功，但是报表应用就无法使用了，必须重启应用服务器，才能继续使用报表应用。 下面介绍一">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-14T06:20:02.000Z">
-<meta property="article:modified_time" content="2019-12-15T13:16:27.765Z">
+<meta property="article:published_time" content="2021-02-18T13:19:32.703Z">
+<meta property="article:modified_time" content="2020-12-22T01:34:59.615Z">
 <meta property="article:author" content="Sig Zhou">
-<meta property="article:tag" content="spring-security">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客" type="application/atom+xml">
@@ -180,48 +179,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-notes1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      踩坑记录
-    </h1>
-  
-
-        
-        <a href="/2019/12/14/notes1/" class="archive-article-date">
-  	<time datetime="2019-12-14T06:20:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>security  debug给的提示太少 看的脑壳痛  记录下遇到的错误</p>
-<h4 id="Access-is-deneid"><a href="#Access-is-deneid" class="headerlink" title="Access is deneid"></a>Access is deneid</h4><h5 id="1-可debug异常"><a href="#1-可debug异常" class="headerlink" title="1.可debug异常"></a>1.可debug异常</h5><a id="more"></a>
+        <h1 id="转载—数据库连接池数据库异常自动重连配置汇总"><a href="#转载—数据库连接池数据库异常自动重连配置汇总" class="headerlink" title="转载—数据库连接池数据库异常自动重连配置汇总"></a>转载—数据库连接池数据库异常自动重连配置汇总</h1><h4 id="这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。"><a href="#这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。" class="headerlink" title="这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。"></a>这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。</h4><p>文章类型：安装部署</p>
+<p>在实际应用中，有的时候会遇到这样一种情况：</p>
+<p>数据库和应用服务器分别在两台主机上，当数据库连接意外断开，自动重新连接后，应用和数据库能够重新连接成功，但是报表应用就无法使用了，必须重启应用服务器，才能继续使用报表应用。</p>
+<p>下面介绍一种方法，使得不重启应用服务器就可以重新连接报表应用。</p>
+<p><strong>DBCP：</strong></p>
+<p>对属性 validationQuery 设置一个简单的SQL语句就行了，例如：select 1 （mysql 和 sql server 适用）；</p>
+<p><strong>WebLogic：</strong></p>
+<p>进入某个连接池配置页，进入”连接”页，点击高级选项的”show”显示高级选项。</p>
+<p>指定 “测试频率” 并启用 “测试保留的连接”、”测试创建的连接” 和 “测试释放的连接”。</p>
+<p>测试频率(Test Frequency): 60 秒</p>
+<p>自动数据库连接测试之间的秒数(0 - 32 位正整数)。测试失败的连接将被关闭，然后重新打开以重新建立有效的物理数据库连接。(必须在下面指定测试表名称。)</p>
+<p>The number of seconds (between 0 and a positive 32-bit integer) between automatic database connection tests. Connections that fail the test are closed and reopened to re-establish a valid physical database connection. (You must specify a Test Table Name below.)</p>
+<p>测试保留的连接(Test Reserved Connections)</p>
+<p>指定 WebLogic Server 是否在将连接提供给客户端之前测试该连接。(必须在下面指定测试表名称。)</p>
+<p>Specifies whether WebLogic Server tests a connection before giving it to the client. (You must specify a Test Table Name below.)</p>
+<p>测试创建的连接(Test Created Connections)</p>
+<p>指定 WebLogic Server 是否在创建连接后且将该连接添加到缓冲池中可用连接列表之前对该连接进行测试。(必须指定测试表名称。)</p>
+<p>Specifies whether WebLogic Server tests a connection after creating it but before adding it to the list of connections available in the pool. (You must specify a Test Table Name.)</p>
+<p>测试释放的连接(Test Released Connections)</p>
+<p>指定 WebLogic Server 是否在将连接返回到该 JDBC 连接缓冲池之前测试该连接。(必须指定测试表名称。)</p>
+<p>Specifies whether WebLogic Server tests a connection before returning it to this JDBC connection pool. (You must specify a Test Table Name.)</p>
+<p>连接保留超时(Connection Reserve Timeout): 设为 30 秒</p>
+<p>在保留缓冲池连接的调用超时之前的秒数(-1 - 32 位正整数)。如果设置为 -1，则调用永远不会超时。</p>
+<p>The number of seconds (between -1 and a positive 32-bit integer) after which a call to reserve a connection from the pool will timeout. When set to 0, a call will never timeout. When set to -1, a call will timeout immediately</p>
+<p>重试创建连接的频率(Connection Creation Retry Frequency): 设为 30 秒 尝试建立与数据库的连接的间隔秒数(0 - 32 位正整数)。适用于在数据库不可用的情况下服务器启动时创建的连接缓冲池。</p>
+<p>The number of seconds (between 0 and a positive 32-bit integer) between attempts to establish connections to the database. Applies to connection pools created at server startup when the database is unavailable.</p>
+<p>钝化连接超时(Inactive Connection Timeout)：</p>
+<p>The number of inactive seconds on a reserved connection (between 0 and a positive 32-bit integer) before WebLogic Server reclaims the connection and releases it back into the connection pool.</p>
+<p>服务器申请复议连接并且保留返回给连接池前的钝化时间</p>
+<p>测试表名称(Test Table Name):</p>
+<p>oracle的连接池默认为 SQL SELECT 1 FROM DUAL，sybase数据库可以填入一个记录不多的配置表名例如sys_code。</p>
+<p>The name of the database table to use when testing physical database connections. This field is required when you specify a Test Frequency and enable Test Reserved Connections, Test Created Connections, and Test Released Connections.</p>
+<p><strong>JBoss：</strong></p>
+<p>以下标注红色的内容就是自动重连功能.</p>
+<?xml version="1.0″ encoding="UTF-8″?>
+<datasources>
+<local-tx-datasource>
+<jndi-name>test</jndi-name>
+<connection-url>jdbc:oracle:thin:@192.168.0.1:1521:test</connection-url>
+<driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+<user-name>test</user-name>
+<password>123456</password>
+<exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+<!--<new-connection-sql>select 1 from testtable</new-connection-sql>-->
+<check-valid-connection-sql>select 1 from testtable</check-valid-connection-sql>
+<min-pool-size>5</min-pool-size>
+<max-pool-size>20</max-pool-size>
+<idle-timeout-minutes>0</idle-timeout-minutes>
+<track-statements>
+<prepared-statement-cache-size>32</prepared-statement-cache-size>
+</track-statements></local-tx-datasource>
+</datasources>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Failed to parse expression <span class="string">'ROLE_USER,ROLE_ADMIN'</span></span><br></pre></td></tr></table></figure>
 
-<p>配置问题，开启了use-expressions=”true” 正确配置如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;security:intercept-url pattern=<span class="string">"/**"</span> access=<span class="string">"hasAnyRole('ROLE_USER','ROLE_ADMIN')"</span> /&gt;</span><br></pre></td></tr></table></figure>
 
-<p>虽然use-expressions=”false”后,access=”ROLE_USER,ROLE_ADMIN” 可以使用，但是最好开启，详情见security使用笔记</p>
-<h5 id="2-也可debug异常"><a href="#2-也可debug异常" class="headerlink" title="2.也可debug异常"></a>2.也可debug异常</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.security.access.AccessDeniedException: Access is denied</span><br><span class="line">	at org.springframework.security.access.vote.AffirmativeBased.decide(AffirmativeBased.java:<span class="number">84</span>)</span><br></pre></td></tr></table></figure>
-
-<p> 本人目前遇到过二次这样的异常，二次的解决方法如下</p>
-<p>  1.form表单路径与security.xml中配置不符</p>
-<p>​     form表单的路径是 login</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"$&#123;pageContext.request.contextPath&#125;/login"</span> method=<span class="string">"post"</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>​     security.xml中路径是 login.do</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;security:form-login</span><br><span class="line">                login-page=<span class="string">"/login.jsp"</span></span><br><span class="line">                login-processing-url=<span class="string">"/login.do"</span></span><br><span class="line">                <span class="keyword">default</span>-target-url=<span class="string">"/index.jsp"</span></span><br><span class="line">                authentication-failure-url=<span class="string">"/failer.jsp"</span></span><br><span class="line">                authentication-success-forward-url=<span class="string">"/pages/main.jsp"</span></span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.未使用密码加密，security.xml中却配置了密码加密。非常坑爹，尝试各种方法解决第一个BUG时候，却导致了这个BUG。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;security:password-encoder ref=<span class="string">"passwordEncoder"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
+<p>转载连接为：</p>
+<p><a href="http://blog.sina.com.cn/s/blog_8910bc4f0100v8g6.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_8910bc4f0100v8g6.html</a></p>
+<h4 id="个人思考："><a href="#个人思考：" class="headerlink" title="个人思考："></a>个人思考：</h4><p>dbcp:原因：</p>
+<p>数据库服务器关闭了，链接失效，但连接池不知道，依然使用旧链接。</p>
+<p>dbcp的解决：<br>1、建立一个SQL，使它最起码返回一行记录<br>你可以建一个测试表testtable，然后里面就一行一列</p>
+<p>2、在dbcp中配置validationQuery= “select * from testtable “</p>
+<p>这样你每次获取的连接肯定经过上述SQL的测试，如果不成功dbcp会认为此连接已经失效并放弃之</p>
+<p>使用validationQuery后由于多调用了一条SQL语句，会使效率有轻微下降的  </p>
 
       
 
@@ -230,17 +255,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spring-security</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -291,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/14/notes1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/essay/%E8%BD%AC%E8%BD%BD---%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E%E9%85%8D%E7%BD%AE%E6%B1%87%E6%80%BB.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,20 +317,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2019/12/17/arrayList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ArrayList笔记
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -338,7 +338,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Access-is-deneid"><span class="toc-number">1.</span> <span class="toc-text">Access is deneid</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-可debug异常"><span class="toc-number">1.1.</span> <span class="toc-text">1.可debug异常</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-也可debug异常"><span class="toc-number">1.2.</span> <span class="toc-text">2.也可debug异常</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#转载—数据库连接池数据库异常自动重连配置汇总"><span class="toc-number">1.</span> <span class="toc-text">转载—数据库连接池数据库异常自动重连配置汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">这是工作时遇到DBCP连接池在数据库挂掉重启后无法再次连接，必须重启TOMCAT才能连接时，查询的解决方法。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#个人思考："><span class="toc-number">1.0.0.2.</span> <span class="toc-text">个人思考：</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -387,7 +387,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
