@@ -288,7 +288,7 @@
 <p><img src="http://dl.iteye.com/upload/attachment/0070/0882/afc81221-40c9-3ca9-acce-ac1891c36c4e.jpg" alt="img"><br>  根据这个特性，我们可以推测Tomcat中session的内存结构大致如下。</p>
 <p><img src="http://dl.iteye.com/upload/attachment/0070/0884/ac22e2bc-d67f-3a99-a55b-a737e8738a19.jpg" alt="img"><br> 笔者以前用过的iPlanet也采用的是同样的方式，估计SunONE与iPlanet之间不会有太大的差别。对于这种方式的服务器，解决的思路很简单，实际实行起来也不难。要么让所有的应用程序共享一个session id，要么让应用程序能够获得其他应用程序的session id。 </p>
 <p>​    iPlanet中有一种很简单的方法来实现共享一个session id，那就是把各个应用程序的cookie路径都设为/（实际上应该是/NASApp，对于应用程序来讲它的作用相当于根）。 </p>
-<p>​    <session-info><br>​    <path>/NASApp</path><br>​    </session-info> </p>
+<p>​    <session-info><br>​    <path></path>/NASApp<br>​    </session-info> </p>
 <p>​    需要注意的是，操作共享的session应该遵循一些编程约定，比如在session attribute名字的前面加上应用程序的前缀，使得setAttribute(“name”, “neo”)变成setAttribute(“app1.name”, “neo”)，以防止命名空间冲突，导致互相覆盖。 </p>
 <p>​    在Tomcat中则没有这么方便的选择。在Tomcat版本3上，我们还可以有一些手段来共享session。对于版本4以上的Tomcat，目前笔者尚未发现简单的办法。只能借助于第三方的力量，比如使用文件、数据库、JMS或者客户端cookie，URL参数或者隐藏字段等手段。 </p>
 <p>​    我们再看一下Weblogic Server是如何处理session的。</p>
@@ -386,18 +386,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/22/Calendar/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          判断当前时间是否在某段时间内
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/17/arrayList/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ArrayList笔记</div>
+    <a href="/2019/12/22/Calendar/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">判断当前时间是否在某段时间内</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -453,7 +444,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2020 Sig Zhou
+        &copy; 2021 Sig Zhou
       </div>
      <div class="footer-right">
           
@@ -543,11 +534,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Calnedar,jsp</a>
+                <a href="javascript:void(0)" class="js-tag color3">Session</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Session</a>
+                <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,7 +546,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
+                <a href="javascript:void(0)" class="js-tag color3">Calnedar,jsp</a>
               </li>
             
             <div class="clearfix"></div>
