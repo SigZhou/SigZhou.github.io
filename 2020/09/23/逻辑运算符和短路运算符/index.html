@@ -23,15 +23,15 @@
         border-left-color: #6d6d6d;    /*左边框颜色*/
     }
   </style>
-  <meta name="description" content="1、与运算的优先级比或运算高2、短路运算符 不会做多余的运算12345678int i &#x3D;1;      int j &#x3D; 2;      if(i !&#x3D; 1 || i &#x3D;&#x3D; 1 &amp;&amp; j &#x3D;&#x3D; 2)&amp;#123;          System.out.println(&quot;测试一下&quot;);      &amp;#125;      if(i !&#x3D; 1 || i &#x3D;&#x3D; 1 &amp;&amp; j">
+  <meta name="description" content="1、与运算的优先级比或运算高2、短路运算符 不会做多余的运算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="逻辑运算符和短路运算符">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;09&#x2F;23&#x2F;%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%E7%AC%A6&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="1、与运算的优先级比或运算高2、短路运算符 不会做多余的运算12345678int i &#x3D;1;      int j &#x3D; 2;      if(i !&#x3D; 1 || i &#x3D;&#x3D; 1 &amp;&amp; j &#x3D;&#x3D; 2)&amp;#123;          System.out.println(&quot;测试一下&quot;);      &amp;#125;      if(i !&#x3D; 1 || i &#x3D;&#x3D; 1 &amp;&amp; j">
+<meta property="og:description" content="1、与运算的优先级比或运算高2、短路运算符 不会做多余的运算">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-23T13:32:22.000Z">
-<meta property="article:modified_time" content="2021-02-18T14:00:27.624Z">
+<meta property="article:modified_time" content="2021-02-18T14:17:47.370Z">
 <meta property="article:author" content="Sig Zhou">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -200,7 +200,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、与运算的优先级比或运算高"><a href="#1、与运算的优先级比或运算高" class="headerlink" title="1、与运算的优先级比或运算高"></a>1、与运算的优先级比或运算高</h2><h3 id="2、短路运算符-不会做多余的运算"><a href="#2、短路运算符-不会做多余的运算" class="headerlink" title="2、短路运算符 不会做多余的运算"></a>2、短路运算符 不会做多余的运算</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i =<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">int</span> j = <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span>(i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span>)&#123;</span><br><span class="line">          System.out.println(<span class="string">"测试一下"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j != <span class="number">2</span>)&#123;</span><br><span class="line">          System.out.println(<span class="string">"测试二下"</span>);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="1、与运算的优先级比或运算高"><a href="#1、与运算的优先级比或运算高" class="headerlink" title="1、与运算的优先级比或运算高"></a>1、与运算的优先级比或运算高</h2><h3 id="2、短路运算符-不会做多余的运算"><a href="#2、短路运算符-不会做多余的运算" class="headerlink" title="2、短路运算符 不会做多余的运算"></a>2、短路运算符 不会做多余的运算</h3><a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i =<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">int</span> j = <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span>(i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span>)&#123;</span><br><span class="line">          System.out.println(<span class="string">"测试一下"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j != <span class="number">2</span>)&#123;</span><br><span class="line">          System.out.println(<span class="string">"测试二下"</span>);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测试一下</span><br></pre></td></tr></table></figure>
@@ -462,19 +464,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL TL表达式 javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL TL表达式 javascript</a>
               </li>
              
               <li class="article-tag-list-item">

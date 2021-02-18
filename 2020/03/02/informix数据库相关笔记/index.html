@@ -23,15 +23,15 @@
         border-left-color: #6d6d6d;    /*左边框颜色*/
     }
   </style>
-  <meta name="description" content="一、设置事务和会话隔离级别1set isolation to dirty read  1 dirty read​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。 2 Committed Read​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。 3 Cursor Stability​    游标稳定性 4 Repeatable">
+  <meta name="description" content="一、设置事务和会话隔离级别1set isolation to dirty read  1 dirty read​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="informix数据库相关笔记">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;02&#x2F;informix%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="一、设置事务和会话隔离级别1set isolation to dirty read  1 dirty read​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。 2 Committed Read​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。 3 Cursor Stability​    游标稳定性 4 Repeatable">
+<meta property="og:description" content="一、设置事务和会话隔离级别1set isolation to dirty read  1 dirty read​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-02T13:32:23.000Z">
-<meta property="article:modified_time" content="2021-02-18T13:42:58.740Z">
+<meta property="article:modified_time" content="2021-02-18T14:17:16.491Z">
 <meta property="article:author" content="Sig Zhou">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -202,7 +202,7 @@
       
         <h2 id="一、设置事务和会话隔离级别"><a href="#一、设置事务和会话隔离级别" class="headerlink" title="一、设置事务和会话隔离级别"></a>一、设置事务和会话隔离级别</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">isolation</span> <span class="keyword">to</span> dirty <span class="keyword">read</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="1-dirty-read"><a href="#1-dirty-read" class="headerlink" title="1 dirty read"></a>1 dirty read</h3><p>​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。</p>
+<h3 id="1-dirty-read"><a href="#1-dirty-read" class="headerlink" title="1 dirty read"></a>1 dirty read</h3><p>​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。<a id="more"></a></p>
 <h3 id="2-Committed-Read"><a href="#2-Committed-Read" class="headerlink" title="2 Committed Read"></a>2 Committed Read</h3><p>​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。</p>
 <h3 id="3-Cursor-Stability"><a href="#3-Cursor-Stability" class="headerlink" title="3 Cursor Stability"></a>3 Cursor Stability</h3><p>​    游标稳定性</p>
 <h3 id="4-Repeatable-Read"><a href="#4-Repeatable-Read" class="headerlink" title="4 Repeatable Read"></a>4 Repeatable Read</h3><p>​    可重复读： 读取的记录上加共享锁，其他用户可以加读取数据，但不能修改，事务提交后，锁才被释放，同一个事务中前后俩次读取记录是一致的（A事务2次读取的值不会因为其他事务对数据进行修改而变化）。</p>
@@ -524,19 +524,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL TL表达式 javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL TL表达式 javascript</a>
               </li>
              
               <li class="article-tag-list-item">

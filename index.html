@@ -197,26 +197,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、与运算的优先级比或运算高"><a href="#1、与运算的优先级比或运算高" class="headerlink" title="1、与运算的优先级比或运算高"></a>1、与运算的优先级比或运算高</h2><h3 id="2、短路运算符-不会做多余的运算"><a href="#2、短路运算符-不会做多余的运算" class="headerlink" title="2、短路运算符 不会做多余的运算"></a>2、短路运算符 不会做多余的运算</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i =<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">int</span> j = <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span>(i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span>)&#123;</span><br><span class="line">          System.out.println(<span class="string">"测试一下"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j != <span class="number">2</span>)&#123;</span><br><span class="line">          System.out.println(<span class="string">"测试二下"</span>);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测试一下</span><br></pre></td></tr></table></figure>
-
-<p>分析</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i != <span class="number">1</span> || i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<p>等同于</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i != <span class="number">1</span> || （i == <span class="number">1</span> &amp;&amp; j == <span class="number">2</span>）</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、短路运算符-不会做多余的运算-1"><a href="#2、短路运算符-不会做多余的运算-1" class="headerlink" title="2、短路运算符 不会做多余的运算"></a>2、短路运算符 不会做多余的运算</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span>(i==<span class="number">0</span> || ++i ==<span class="number">1</span> )&#123;</span><br><span class="line">          System.out.println(i);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(i!=<span class="number">0</span> || ++i ==<span class="number">1</span> )&#123;</span><br><span class="line">          System.out.println(i);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>分析</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">第一个<span class="keyword">if</span>，i==<span class="number">0</span>成立，走不到++<span class="number">1</span> =<span class="number">1</span>；</span><br><span class="line">所以输出i=<span class="number">0</span></span><br><span class="line">    </span><br><span class="line">第二个<span class="keyword">if</span>，i!=<span class="number">0</span>不成立，走++<span class="number">1</span> =<span class="number">1</span>为<span class="keyword">true</span></span><br><span class="line">所以输出i=<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">|| 判断前面为<span class="keyword">true</span>则整体为<span class="keyword">true</span>，无需继续走后续运算，不做多余运算。</span><br></pre></td></tr></table></figure>
-
-
+        <h2 id="1、与运算的优先级比或运算高"><a href="#1、与运算的优先级比或运算高" class="headerlink" title="1、与运算的优先级比或运算高"></a>1、与运算的优先级比或运算高</h2><h3 id="2、短路运算符-不会做多余的运算"><a href="#2、短路运算符-不会做多余的运算" class="headerlink" title="2、短路运算符 不会做多余的运算"></a>2、短路运算符 不会做多余的运算</h3>
+        
+          <a class="article-more-a" href="/2020/09/23/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%E7%AC%A6/#more">more >></a>
+        
       
 
       
@@ -288,76 +272,9 @@
         <h2 id="一、设置事务和会话隔离级别"><a href="#一、设置事务和会话隔离级别" class="headerlink" title="一、设置事务和会话隔离级别"></a>一、设置事务和会话隔离级别</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">isolation</span> <span class="keyword">to</span> dirty <span class="keyword">read</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-dirty-read"><a href="#1-dirty-read" class="headerlink" title="1 dirty read"></a>1 dirty read</h3><p>​    脏读：不会分配任何锁，可以读到正在修改还未提交的记录。 适合静态表（只读不改），读取速度要求高。</p>
-<h3 id="2-Committed-Read"><a href="#2-Committed-Read" class="headerlink" title="2 Committed Read"></a>2 Committed Read</h3><p>​    读已提交：加共享锁，其他进程可以读不可以改，解决脏读。</p>
-<h3 id="3-Cursor-Stability"><a href="#3-Cursor-Stability" class="headerlink" title="3 Cursor Stability"></a>3 Cursor Stability</h3><p>​    游标稳定性</p>
-<h3 id="4-Repeatable-Read"><a href="#4-Repeatable-Read" class="headerlink" title="4 Repeatable Read"></a>4 Repeatable Read</h3><p>​    可重复读： 读取的记录上加共享锁，其他用户可以加读取数据，但不能修改，事务提交后，锁才被释放，同一个事务中前后俩次读取记录是一致的（A事务2次读取的值不会因为其他事务对数据进行修改而变化）。</p>
-<h3 id="5-Last-Committed-Read"><a href="#5-Last-Committed-Read" class="headerlink" title="5 Last Committed Read"></a>5 Last Committed Read</h3><p>​    读最后提交数据：乐观锁，它解决了Committed Read的不足，因为Committed Read在记录被锁时，其它进程需要等待。</p>
-<p>​    与Committed Read对比：提高了并发量和系统的吞吐量。表需要设置为行级锁，而不是页级锁。</p>
-<h2 id="二、锁"><a href="#二、锁" class="headerlink" title="二、锁"></a>二、锁</h2><p>​    锁，防止其他进程修改。</p>
-<p>​    锁的释放：</p>
-<p>​        1）数据库关闭，锁释放</p>
-<p>​        2）数据库使用事务，事务结束，释放事务加的锁</p>
-<p>​        3） 不使用事务时，unload table时，锁被释放。</p>
-<p>​    锁的类型    </p>
-<p>​        1） 共享锁（Shared locks）：多事务读取，只有当前事务可修改，其他只可读取，多个事务可以在一个对象上加多个共享锁（如果对象有多个共享锁，所有用户不可修改，直到共享锁全部释放），在已有排他锁的对象上不可加共享锁。</p>
-<p>​        2） 排他锁(Exclusive locks)：同一时间只有一个事务可以读取，加了排他锁的记录不可再加其他锁。</p>
-<p>​        3） 提升/更新锁（Promotable/Update locks）:</p>
-<p>​        4）专一锁（Intent lock）:</p>
-<p>​    锁的不同粒度：</p>
-<p>​            1）数据库级别的锁：数据库管理活动，如imports和exports</p>
-<p>​                </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATABASE database_name EXCLUSIVE;</span><br></pre></td></tr></table></figure>
-
-<p>​            2）行级别的锁：整个表或大部分数据需要更新，表级锁，效率更高</p>
-<p>​            排它锁</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LOCK</span> <span class="keyword">TABLE</span> tab1 <span class="keyword">IN</span> EXCLUSIVE <span class="keyword">MODE</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​            共享锁</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">LOCK</span> <span class="keyword">TABLE</span> tab2 <span class="keyword">IN</span> <span class="keyword">SHARE</span> <span class="keyword">MODE</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​            取消锁</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UNLOCK</span> <span class="keyword">TABLE</span> tab1;</span><br></pre></td></tr></table></figure>
-
-<p>​            3) 页级锁： 当按数据物理顺序进行访问和更新时，页级锁效率高。informix默认为页级锁。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tab1 <span class="keyword">LOCK</span> <span class="keyword">MODE</span> PAGE;</span><br></pre></td></tr></table></figure>
-
-<p>​            4） 行级锁： 个事务只访问表中的一小部分数据，行级锁效率高。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab1 (col1) <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">ROW</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​                    将某表修改为行级别</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tab1 <span class="keyword">LOCK</span> <span class="keyword">MODE</span> (<span class="keyword">ROW</span>);</span><br></pre></td></tr></table></figure>
-
-<p>​            5） 查看表锁模式的方法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oncheck –pt dbname:tablename;</span><br></pre></td></tr></table></figure>
-
-<p>​            或</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbschema –d dbname –t tablename -ss;</span><br></pre></td></tr></table></figure>
-
-<p>​        设置事务/会话的锁模式</p>
-<p>​            1） 不会等待锁的释放</p>
-<p>​            默认的锁模式，如果数据库对象被锁，则立即返回错误。错误消息参考如下</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-244: Could not <span class="keyword">do</span> a <span class="keyword">physical</span>-<span class="keyword">order</span> <span class="keyword">read</span> <span class="keyword">to</span> <span class="keyword">fetch</span> the <span class="keyword">next</span> <span class="keyword">row</span></span><br><span class="line">• <span class="number">107</span>: ISAM <span class="keyword">error</span>: <span class="built_in">record</span> <span class="keyword">is</span> <span class="keyword">locked</span></span><br></pre></td></tr></table></figure>
-
-<p>​            设置为此种锁模式的语句：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">TO</span> <span class="keyword">NOT</span> <span class="keyword">WAIT</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​            2)  一致等待锁的释放</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">TO</span> <span class="keyword">WAIT</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​            3) 在锁释放前，等待n秒，锁没释放，则报错。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">LOCK</span> <span class="keyword">MODE</span> <span class="keyword">TO</span> <span class="keyword">WAIT</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​    锁的监控：</p>
-<p>​            1）监控session的隔离级别        使用: onstat –g sql 或者 onstat –g ses，例如在笔者测试服务器上运行onstat -g sql</p>
-<p>​            2）<strong>查看用户进程锁等待情况</strong>       使用: onstat –u</p>
-<p>​            3） <strong>查看锁使用和等待情况</strong>       使用: onstat -k</p>
-<p>​            4） <strong>监控数据库事务及其状态</strong>       使用: onstat -x</p>
-<p>​    </p>
-<h2 id="三、物理日志和逻辑日志"><a href="#三、物理日志和逻辑日志" class="headerlink" title="三、物理日志和逻辑日志"></a>三、物理日志和逻辑日志</h2><p>​    1  物理日志：存储一批dbspace页的前映像，前映像：代表了所有数据在物理上与逻辑上都保持一致的这样一个时刻</p>
-<p>​    2  逻辑日志（logical log）：用来记录所有的事务操作及其处理的数据，对数据Online所发生的变化进行日志记录</p>
-<p>​    物理日志+逻辑日志可以恢复数据自上一次已知的一致点以来发生的所有事务</p>
-<p>​    </p>
-
+        
+          <a class="article-more-a" href="/2020/03/02/informix%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/#more">more >></a>
+        
       
 
       
@@ -481,6 +398,78 @@
 
 
   
+    <article id="post-springBoot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/26/springBoot/">SpringBoot的使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/26/springBoot/" class="archive-article-date">
+  	<time datetime="2019-12-26T15:21:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​    Springboot的启动及整合mybatis；</p>
+        
+          <a class="article-more-a" href="/2019/12/26/springBoot/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-sqlAndJs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -520,78 +509,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL TL表达式 javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-springBoot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/26/springBoot/">SpringBoot的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/26/springBoot/" class="archive-article-date">
-  	<time datetime="2019-12-26T15:21:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    Springboot的启动及整合mybatis；</p>
-        
-          <a class="article-more-a" href="/2019/12/26/springBoot/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
@@ -1030,19 +947,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL TL表达式 javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL TL表达式 javascript</a>
               </li>
              
               <li class="article-tag-list-item">
